@@ -1,4 +1,5 @@
 import express, {json, Request, Response} from "express"
+import indexRouter from "./routes"
 
 const app = express()
 
@@ -10,5 +11,7 @@ app.use("/status", (request: Request, response: Response) => {
         environment: process.env.ENVIRONMENT
     })
 })
+
+app.use("/", indexRouter)
 
 export default app
