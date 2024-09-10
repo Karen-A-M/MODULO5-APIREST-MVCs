@@ -1,8 +1,11 @@
 import { Router } from "express"
 import UsersController from "../controllers/users"
+import checkToken from "../middlewares/check-token"
 
 const usersRouter = Router()
 
-usersRouter.delete("/:id", UsersController.deleteById)
+usersRouter.get("/", UsersController.getAll)
+
+usersRouter.delete("/:id", checkToken, UsersController.deleteById)
 
 export default usersRouter

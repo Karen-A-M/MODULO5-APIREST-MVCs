@@ -13,8 +13,8 @@ const suppliesSchema = z.object({
         invalid_type_error: "El stock debe ser de tipo NUMBER",
         required_error: "El stock es requerido"
     }).int(),
-    update: z.date({
-        invalid_type_error: "La fecha debe tener el formato FECHA YYYY-MM-DD",
+    update: z.string({
+        invalid_type_error: "La fecha debe ser de tipo STRING",
         required_error: "La fecha es requerida"
     })
 })

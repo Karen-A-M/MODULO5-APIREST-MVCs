@@ -1,16 +1,17 @@
-import { Router } from "express";
-import SuppliesController from "../controllers/supplies";
+import { Router } from "express"
+import SuppliesController from "../controllers/supplies"
+import checkToken from "../middlewares/check-token"
 
 const suppliesRouter = Router()
 
 suppliesRouter.get("/", SuppliesController.getAll)
 
-suppliesRouter.get("/:id", SuppliesController.getById)
+suppliesRouter.get("/:id", checkToken, SuppliesController.getById)
 
-suppliesRouter.post("/", SuppliesController.create)
+suppliesRouter.post("/", checkToken, SuppliesController.create)
 
-suppliesRouter.patch("/:id", SuppliesController.updateById)
+suppliesRouter.patch("/:id", checkToken, SuppliesController.updateById)
 
-suppliesRouter.delete("/:id", SuppliesController.deleteById)
+suppliesRouter.delete("/:id", checkToken, SuppliesController.deleteById)
 
 export default suppliesRouter

@@ -1,11 +1,26 @@
 {
     "supplies": [
         {
-            "id": "kjckjbsjv",
-            "name": "Alcohol",
-            "description": "Para emergencias",
-            "stock": 25,
-            "update": "2024-08-05"
+            "id": "ea8ac572-3253-47f1-baa9-947395a378bc",
+            "name": "Alcohol clinico",
+            "description": "Se usan en medicina como antisépticos, desinfectantes, y antídotos",
+            "stock": 5,
+            "update": "2024/09/25"
+        },
+        {
+            "id": "9b6778f0-f9ac-480f-a4be-8c99eb9bb08b",
+            "name": "Glucometro",
+            "description": "El glucómetro se utiliza para medir la glucosa en la sangre. Este dispositivo indica la cantidad de glucosa en una pequeña muestra de sangre",
+            "stock": 300,
+            "update": "2023/05/15"
+        },
+        {
+            "id": "339f610c-5454-49d1-a9d1-b4aa693ff887",
+            "name": "Guantes",
+            "description": "Los guantes médicos son guantes desechables utilizados durante procedimientos médicos que impiden la contaminación cruzada entre el personal de la salud y los pacientes",
+            "stock": 31,
+            "update": "2024/09/11",
+            "stoc": 31
         }
     ]
 }

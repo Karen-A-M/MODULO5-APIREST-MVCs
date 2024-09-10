@@ -86,9 +86,29 @@ class AuthService {
     
           await AuthModel.write(authDb);
         } catch (error) {
-          throw error;
+          throw error
         }
       }
+
+      static async read() {
+        try {
+          const db = await AuthModel.read()
+    
+          return db
+        } catch (error) {
+          throw error
+        }
+      }  
+      
+      static async write(data) {
+        try {
+          const db = await AuthModel.write(data)
+    
+          return db
+        } catch (error) {
+          throw error
+        }
+      }  
 }
 
 export default AuthService

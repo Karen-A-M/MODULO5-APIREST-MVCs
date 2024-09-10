@@ -8,7 +8,7 @@ const indexRouter = Router()
 
 indexRouter.use("/auth", authRouter)
 
-indexRouter.use("/users", checkToken, usersRouter)
+indexRouter.use("/users", usersRouter)
 
 indexRouter.use("/supplies", suppliesRouter)
 

@@ -1,5 +1,6 @@
 import SuppliesModel from "../models/supplies"
-import { validateSupply } from "../schemas/supplies";
+import { validateSupply } from "../schemas/supplies"
+import { validateUpdate } from "../schemas/update";
 import {v4 as uuidv4} from "uuid"
 import AuthService from "./auth";
 import customError from "../utils/custom-error";
@@ -22,7 +23,7 @@ class SuppliesService {
           const { supplies } = await SuppliesModel.read();
           
           const supplyFiltered = supplies.map((supply) => {
-            const newSupply = {id: supply.id, name: supply.name, description: supply.description}
+            const newSupply = {name: supply.name, description: supply.description}
             return newSupply
         })
 
@@ -39,9 +40,13 @@ class SuppliesService {
           if (!result.success) customError({message: "Por favor ingrese los datos necesarios para crear un nuevo suministro", status: 400})
     
           const db = await SuppliesModel.read()
-    
+
           const id = uuidv4()
-          const {name, description, stock, update} = result.data;
+          const {name, description, stock, update} = result.data
+
+          const findSupply = db.supplies.find((supply) => supply.name == name)
+
+          if(findSupply) customError({message: "El suministro ya existe en la base de datos", status: 400})
     
           const newSupply = {
             id,
@@ -61,8 +66,12 @@ class SuppliesService {
         }
       }
     
-      static async updateById(id: string, data: {stock: number}) {
+      static async updateById(id: string, data: {stock: number, update: string}) {
         try {
+          const result = validateUpdate(data);
+    
+          if (!result.success) customError({message: "Por favor ingrese los datos necesarios para crear un nuevo suministro", status: 400})
+          
           const db = await SuppliesModel.read();
     
           const supplies = db.supplies.map((supply) => {
@@ -75,7 +84,7 @@ class SuppliesService {
     
           await SuppliesModel.write(db);
         } catch (error) {
-          throw error;
+          throw error
         }
       }
     
