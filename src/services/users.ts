@@ -34,8 +34,11 @@ class UsersService {
     static async create(data: { name: string, rol: string, email: string }) {
         try {
           const usersDb = await UsersModel.read()
+
           const id = uuidv4()
+
           const {name, rol, email} = data
+
           const newUser = {
             id,
             name,
@@ -50,6 +53,7 @@ class UsersService {
           usersDb.users.push(newUser)
 
           await UsersModel.write(usersDb)
+
           return id
         } catch (error) {
           throw error
@@ -71,7 +75,9 @@ class UsersService {
           const db = await UsersService.read()
     
           const user = db.users.find((user) => email == user.email)
+
           if (!user) customError({message: "Usuario no encontrado", status: 404})
+
           return user
         } catch (error) {
           throw error
@@ -81,8 +87,11 @@ class UsersService {
       static async deleteById(id: string) {
         try {
           const userDb = await UsersModel.read()
+
           const users = userDb.users.filter((user) => user.id != id)
+
           const authDb = await AuthService.read()
+          
           const newAuth = authDb.auth.filter((auth) => auth.userId != id)
     
           if (userDb.users.length == users.length) customError({message: "Usuario no encontrado", status: 404})

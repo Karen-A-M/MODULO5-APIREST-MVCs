@@ -1,23 +1,25 @@
-import { writeFile, readFile } from "jsonfile";
+import { writeFile, readFile } from "jsonfile"
 
 class UsersModel {
   static async write(data) {
     try {
-      await writeFile("./src/database/users.json", data);
-      return true;
+      await writeFile("./src/database/users.json", data)
+
+      return true
     } catch (error) {
-      throw error;
+      throw error
     }
   }
 
   static async read() {
     try {
-      const db = await readFile("./src/database/users.json");
-      return db;
+      const db = await readFile("./src/database/users.json")
+
+      return db
     } catch (error) {
-      throw error;
+      throw error
     }
   }
 }
 
-export default UsersModel;
+export default UsersModel

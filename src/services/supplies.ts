@@ -1,14 +1,14 @@
 import SuppliesModel from "../models/supplies"
 import { validateSupply } from "../schemas/supplies"
-import { validateUpdate } from "../schemas/update";
+import { validateUpdate } from "../schemas/update"
 import {v4 as uuidv4} from "uuid"
-import AuthService from "./auth";
-import customError from "../utils/custom-error";
+import AuthService from "./auth"
+import customError from "../utils/custom-error"
 
 class SuppliesService {
     static async getAllWithQuery(where) {
         try {
-          const { supplies } = await SuppliesModel.read();
+          const { supplies } = await SuppliesModel.read()
     
           await AuthService.getByToken(where.token)
 
@@ -20,7 +20,7 @@ class SuppliesService {
 
       static async getAll() {
         try {
-          const { supplies } = await SuppliesModel.read();
+          const { supplies } = await SuppliesModel.read()
           
           const supplyFiltered = supplies.map((supply) => {
             const newSupply = {name: supply.name, description: supply.description}
@@ -29,19 +29,20 @@ class SuppliesService {
 
         return supplyFiltered
         } catch (error) {
-          throw error;
+          throw error
         }
       }
     
       static async create(supply: {name: string, description: string, stock: number, update: string}) {
         try {
-          const result = validateSupply(supply);
+          const result = validateSupply(supply)
     
           if (!result.success) customError({message: "Por favor ingrese los datos necesarios para crear un nuevo suministro", status: 400})
     
           const db = await SuppliesModel.read()
 
           const id = uuidv4()
+
           const {name, description, stock, update} = result.data
 
           const findSupply = db.supplies.find((supply) => supply.name == name)
@@ -54,11 +55,11 @@ class SuppliesService {
             description,
             stock,
             update,
-          };
+          }
     
-          db.supplies.push(newSupply);
+          db.supplies.push(newSupply)
     
-          await SuppliesModel.write(db);
+          await SuppliesModel.write(db)
     
           return newSupply;
         } catch (error) {
@@ -68,21 +69,21 @@ class SuppliesService {
     
       static async updateById(id: string, data: {stock: number, update: string}) {
         try {
-          const result = validateUpdate(data);
+          const result = validateUpdate(data)
     
           if (!result.success) customError({message: "Por favor ingrese los datos necesarios para crear un nuevo suministro", status: 400})
           
-          const db = await SuppliesModel.read();
+          const db = await SuppliesModel.read()
     
           const supplies = db.supplies.map((supply) => {
             if (supply.id == id) {
               return {...supply, ...data}
-            } else return supply;
-          });
+            } else return supply
+          })
 
-          db.supplies = supplies;
+          db.supplies = supplies
     
-          await SuppliesModel.write(db);
+          await SuppliesModel.write(db)
         } catch (error) {
           throw error
         }
@@ -90,16 +91,17 @@ class SuppliesService {
     
       static async deleteById(id: string) {
         try {
-          const db = await SuppliesModel.read();
-          const supplies = db.supplies.filter((supply) => supply.id != id);
+          const db = await SuppliesModel.read()
+          
+          const supplies = db.supplies.filter((supply) => supply.id != id)
     
           if (db.supplies.length == supplies.length) customError({message: "Suministro no encontrado", status: 404})
     
-          db.supplies = supplies;
+          db.supplies = supplies
     
-          await SuppliesModel.write(db);
+          await SuppliesModel.write(db)
         } catch (error) {
-          throw error;
+          throw error
         }
       }
     
@@ -107,12 +109,13 @@ class SuppliesService {
         try {
           const supplies = await SuppliesService.getAllWithQuery(where)
     
-          const supply = supplies.find((supply) => supply.id == id);
+          const supply = supplies.find((supply) => supply.id == id)
+
           if (!supply) customError({message: "Suministro no encontrado", status: 404})
     
           return supply
         } catch (error) {
-          throw error;
+          throw error
         }
       }
 }
