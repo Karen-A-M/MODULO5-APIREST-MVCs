@@ -1,3 +1,11 @@
 {
-    "supplies": []
+    "supplies": [
+        {
+            "id": "kjckjbsjv",
+            "name": "Alcohol",
+            "description": "Para emergencias",
+            "stock": 25,
+            "update": "2024-08-05"
+        }
+    ]
 }

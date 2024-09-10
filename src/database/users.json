@@ -1,3 +1,10 @@
 {
-    "users": []
+    "users": [
+        {
+            "id": "hnkue2556djbc",
+            "name": "Karen",
+            "rol": "inventory clerck",
+            "email": "karenmontoya@gmail.com"
+        }
+    ]
 }
