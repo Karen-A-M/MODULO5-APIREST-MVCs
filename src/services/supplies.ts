@@ -84,7 +84,7 @@ class SuppliesService {
           const db = await SuppliesModel.read();
           const supplies = db.supplies.filter((supply) => supply.id != id);
     
-          if (db.supplies.length == supplies.length) customError({message: "Producto no encontrado", status: 404})
+          if (db.supplies.length == supplies.length) customError({message: "Suministro no encontrado", status: 404})
     
           db.supplies = supplies;
     
@@ -99,7 +99,7 @@ class SuppliesService {
           const supplies = await SuppliesService.getAllWithQuery(where)
     
           const supply = supplies.find((supply) => supply.id == id);
-          if (!supply) customError({message: "Producto no encontrado", status: 404})
+          if (!supply) customError({message: "Suministro no encontrado", status: 404})
     
           return supply
         } catch (error) {

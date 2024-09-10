@@ -1,9 +1,16 @@
-import { NextFunction, Request, Response, Router } from "express";
+import { Router } from "express";
+import SuppliesController from "../controllers/supplies";
 
 const suppliesRouter = Router()
 
-suppliesRouter.get("/", (request: Request, response: Response, next: NextFunction) => {
-    response.status(200).json({message: "Pude entrar a supplies..."})
-})
+suppliesRouter.get("/", SuppliesController.getAll)
+
+suppliesRouter.get("/:id", SuppliesController.getById)
+
+suppliesRouter.post("/", SuppliesController.create)
+
+suppliesRouter.patch("/:id", SuppliesController.updateById)
+
+suppliesRouter.delete("/:id", SuppliesController.deleteById)
 
 export default suppliesRouter

@@ -1,5 +1,6 @@
 import express, {json, Request, Response} from "express"
 import indexRouter from "./routes"
+import errorHandler from "./middlewares/error-handler"
 
 const app = express()
 
@@ -13,5 +14,7 @@ app.use("/status", (request: Request, response: Response) => {
 })
 
 app.use("/", indexRouter)
+
+app.use(errorHandler)
 
 export default app

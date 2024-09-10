@@ -1,10 +1,22 @@
 {
     "users": [
         {
-            "id": "hnkue2556djbc",
+            "id": "8874e66e-5668-469f-b96e-1b76f31c27b0",
             "name": "Karen",
-            "rol": "inventory clerck",
-            "email": "karenmontoya@gmail.com"
+            "rol": "developer",
+            "email": "karenmontoya609@gmail.com"
+        },
+        {
+            "id": "bdcf3e9b-0a78-4b9d-aa8b-0e62598d88ce",
+            "name": "Sara",
+            "rol": "dancer",
+            "email": "saramontoya609@gmail.com"
+        },
+        {
+            "id": "8980d525-eefc-4a02-8098-94473cccd602",
+            "name": "Abigail",
+            "rol": "Teacher",
+            "email": "abigail_609@gmail.com"
         }
     ]
 }

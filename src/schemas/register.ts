@@ -4,7 +4,7 @@ const registerSchema = z.object({
     name: z.string({
         invalid_type_error: "El nombre debe ser de tipo STRING",
         required_error: "El nombre es requerido"
-    }).min(5, {message: "El nombre tiene que tener como MINIMO 5 caracteres"}),
+    }).min(1, {message: "El nombre tiene que tener como MINIMO 1 caracteres"}),
     rol: z.string({
         invalid_type_error: "El rol debe ser de tipo STRING",
         required_error: "El rol es requerido"
@@ -12,7 +12,7 @@ const registerSchema = z.object({
     email: z.string({
         invalid_type_error: "El email debe ser de tipo STRING",
         required_error: "El email es requerido"
-    }).email().min(5, {message: "El email tiene que tener como MINIMO 5 caracteres"}),
+    }).email().min(3, {message: "El email tiene que tener como MINIMO 3 caracteres"}),
     password: z.string({
         invalid_type_error: "La contraseña debe ser de tipo STRING",
         required_error: "La contraseña es requerida"

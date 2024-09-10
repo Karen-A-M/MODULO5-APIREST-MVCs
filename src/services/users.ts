@@ -49,6 +49,21 @@ class UsersService {
           throw error
         }
       }
+
+      static async deleteById(id: string) {
+        try {
+          const db = await UsersModel.read();
+          const users = db.users.filter((user) => user.id != id)
+    
+          if (db.users.length == users.length) customError({message: "Usuario no encontrado", status: 404})
+    
+          db.users = users
+    
+          await UsersModel.write(db)
+        } catch (error) {
+          throw error
+        }
+      }
 }
 
 export default UsersService

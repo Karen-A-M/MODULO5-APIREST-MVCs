@@ -9,7 +9,7 @@ import customError from "../utils/custom-error";
 class AuthService {
     static async register(data: {name: string, rol:string, email: string; password: string;}) {
       try {
-        const result = validateRegister(data);
+        const result = validateRegister(data)
     
         if (!result.success) customError({message: "Por favor ingrese los datos necesarios para registrarse", status: 400})
 
