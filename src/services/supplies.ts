@@ -6,28 +6,25 @@ import AuthService from "./auth"
 import customError from "../utils/custom-error"
 
 class SuppliesService {
-    static async getAllWithQuery(where) {
+    static async getAll(where) {
         try {
+          const findQuery = Object.keys(where).length
+
           const { supplies } = await SuppliesModel.read()
+
+          if(!findQuery || !where.token) {
+          
+            const supplyFiltered = supplies.map((supply) => {
+              const newSupply = {name: supply.name, description: supply.description}
+              return newSupply
+          })
+          
+          return supplyFiltered
+          }
     
           await AuthService.getByToken(where.token)
 
           return supplies
-        } catch (error) {
-          throw error;
-        }
-      }
-
-      static async getAll() {
-        try {
-          const { supplies } = await SuppliesModel.read()
-          
-          const supplyFiltered = supplies.map((supply) => {
-            const newSupply = {name: supply.name, description: supply.description}
-            return newSupply
-        })
-
-        return supplyFiltered
         } catch (error) {
           throw error
         }
@@ -107,7 +104,7 @@ class SuppliesService {
     
       static async getById(id: string, where) {
         try {
-          const supplies = await SuppliesService.getAllWithQuery(where)
+          const supplies = await SuppliesService.getAll(where)
     
           const supply = supplies.find((supply) => supply.id == id)
 

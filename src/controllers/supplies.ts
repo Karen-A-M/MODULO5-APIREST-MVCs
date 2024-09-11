@@ -4,17 +4,10 @@ import SuppliesService from "../services/supplies"
 class SuppliesController {
     static async getAll(request: Request, response: Response, next: NextFunction) {
         try {
-          const findQuery = Object.keys(request.query).length
-
-          if(!findQuery) {
-            const data = await SuppliesService.getAll()
+            const data = await SuppliesService.getAll(request.query)
     
             response.status(200).json({data})
-          } else {
-            const data = await SuppliesService.getAllWithQuery(request.query)
-    
-            response.status(200).json({data})
-          }
+          
         } catch (error) {
           next(error)
         }

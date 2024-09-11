@@ -65,6 +65,8 @@ class AuthService {
           const authDb = await AuthModel.read()
 
           const userAuth = authDb.auth.find((auth) => auth.userId == user.id)
+
+          if(!userAuth) customError({message: "Ha habido un error en el ID", status: 500})
     
           if (userAuth.password != createHash(password)) customError({message: "Contraseña incorrecta", status: 400})
     

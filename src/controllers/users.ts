@@ -4,17 +4,10 @@ import UsersService from "../services/users"
 class UsersController {
   static async getAll(request: Request, response: Response, next: NextFunction) {
     try {
-      const findQuery = Object.keys(request.query).length
-
-      if(!findQuery) {
-        const data = await UsersService.getAll()
+        const data = await UsersService.getAll(request.query)
 
         response.status(200).json({data})
-      } else {
-        const data = await UsersService.getAllWithQuery(request.query)
-
-        response.status(200).json({data})
-      }
+      
     } catch (error) {
       next(error)
     }

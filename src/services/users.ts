@@ -4,30 +4,27 @@ import {v4 as uuidv4} from "uuid"
 import customError from "../utils/custom-error"
 
 class UsersService {
-  static async getAllWithQuery(where) {
+  static async getAll(where) {
     try {
+      const findQuery = Object.keys(where).length
+
       const { users } = await UsersModel.read()
+
+      if(!findQuery || !where.token) {
+      
+        const userFiltered = users.map((user) => {
+          const newUser = {name: user.name, description: user.description}
+          return newUser
+      })
+      
+      return userFiltered
+      }
 
       await AuthService.getByToken(where.token)
 
       return users
     } catch (error) {
       throw error
-    }
-  }
-
-  static async getAll() {
-    try {
-      const { users } = await UsersModel.read();
-      
-      const userFiltered = users.map((user) => {
-        const newUser = {name: user.name, rol: user.rol}
-        return newUser
-    })
-
-    return userFiltered
-    } catch (error) {
-      throw error;
     }
   }
 
