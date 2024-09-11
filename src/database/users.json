@@ -3,19 +3,19 @@
         {
             "id": "8874e66e-5668-469f-b96e-1b76f31c27b0",
             "name": "Karen",
-            "rol": "developer",
+            "rol": "Inventory control supervisor",
             "email": "karenmontoya609@gmail.com"
         },
         {
             "id": "bdcf3e9b-0a78-4b9d-aa8b-0e62598d88ce",
             "name": "Sara",
-            "rol": "dancer",
+            "rol": "Inventory control specialist",
             "email": "saramontoya609@gmail.com"
         },
         {
             "id": "52b0135c-2fe8-4ec6-b703-82feec3d8b08",
             "name": "Abigail",
-            "rol": "Teacher",
+            "rol": "Inventory clerk",
             "email": "abigail_609@gmail.com"
         }
     ]
