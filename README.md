@@ -17,5 +17,20 @@ GET | 127.0.0.1/users --> Obtener info general útil de la APP.
 GET | 127.0.0.1/supplies --> Obtener info general útil de la APP.
 
 GET | 127.0.0.1/users --> Obtener todos los usuarios registrados.
-- Sin token 
+- Sin token: Obtener solamente el nombre y el rol de los usuarios
 
+GET | 127.0.0.1/charts --> Obtener todas las cartas natales.
+
+GET | 127.0.0.1/charts/:name --> Obtener una carta natal por nombre.
+
+POST | 127.0.0.1/users --> Dar de alta nuevo usuario.
+
+POST | 127.0.0.1/charts --> Crear nueva carta natal.
+
+PATCH | 127.0.0.1/users/:id --> Actualizar un usuario.
+
+PATCH | 127.0.0.1/charts/:id --> Actualizar una carta natal.
+
+DELETE | 127.0.0.1/users/:id --> Eliminar un usuario.
+
+DELETE | 127.0.0.1/charts/:id --> Eliminar una carta natal.

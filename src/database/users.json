@@ -17,6 +17,12 @@
             "name": "Abigail",
             "rol": "Inventory clerk",
             "email": "abigail_609@gmail.com"
+        },
+        {
+            "id": "eeeb3fcb-17f9-442f-a2e4-bd5bad469f61",
+            "name": "Gladys",
+            "rol": "Inventory clerk",
+            "email": "gladys_alvarez07@gmail.com"
         }
     ]
 }
