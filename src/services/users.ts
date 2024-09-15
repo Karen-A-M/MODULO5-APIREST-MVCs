@@ -19,7 +19,7 @@ class UsersService {
       
       return userFiltered
       }
-      
+    
       await AuthService.getByToken(where.token)
 
       return users
