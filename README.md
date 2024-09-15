@@ -19,3 +19,4 @@ GET | 127.0.0.1/supplies --> Obtener info general útil de la APP.
 GET | 127.0.0.1/users --> Obtener todos los usuarios registrados.
 - Sin token: Obtener solamente el nombre y el rol de los usuarios
 
+
