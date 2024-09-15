@@ -13,7 +13,7 @@ class UsersService {
       if(!findQuery || !where.token) {
       
         const userFiltered = users.map((user) => {
-          const newUser = {name: user.name, description: user.description}
+          const newUser = {name: user.name, rol: user.rol}
           return newUser
       })
       
